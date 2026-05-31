@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesanan Saya — Warung Makan Sederhana</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- =============================
+       SECTION: NAVIGASI
+       Identik dengan menu.html,
+       badge counter tetap aktif
+  ============================== -->
+  <header id="navbar">
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        Warung Makan Sederhana
+      </a>
+
+      <nav>
+        <a href="menu.html">← Kembali ke Menu</a>
+        <a href="order.html" id="link-keranjang">
+          Pesanan Saya
+          <span id="cart-count">0</span>
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =============================
+       SECTION: HERO MINI
+       Isi: Judul halaman saja
+  ============================== -->
+  <section id="hero-mini">
+    <div class="container">
+      <h1>Ringkasan Pesanan</h1>
+      <p>Periksa kembali pesananmu sebelum dikirim.</p>
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: ISI KERANJANG
+       Isi: Daftar item yang dipilih.
+       Di-render oleh cart.js dari
+       localStorage.
+       Jika kosong, tampilkan pesan
+       dan CTA kembali ke menu.
+  ============================== -->
+  <section id="ringkasan-order">
+    <div class="container">
+
+      <!-- 
+        STATE 1: Keranjang KOSONG
+        JS akan sembunyikan div ini jika ada item.
+        Default: tampil.
+      -->
+      <div id="keranjang-kosong">
+        <p>Belum ada item di pesananmu.</p>
+        <a href="menu.html" class="btn-sekunder">Lihat Menu</a>
+      </div>
+
+      <!-- 
+        STATE 2: Keranjang BERISI
+        JS akan tampilkan div ini jika ada item.
+        Default: tersembunyi.
+      -->
+      <div id="keranjang-berisi" class="keranjang-sembunyi">
+
+        <!-- Tabel item pesanan -->
+        <div id="daftar-item">
+          <!--
+            CONTOH STRUKTUR BARIS ITEM
+            (referensi styling, akan diganti JS)
+
+            <div class="baris-item">
+              <div class="item-info">
+                <span class="item-nama">Nasi Goreng Spesial</span>
+                <span class="item-harga">Rp 25.000</span>
+              </div>
+              <div class="item-kontrol">
+                <button class="btn-kurang" data-id="m001">−</button>
+                <span class="item-jumlah">2</span>
+                <button class="btn-tambah" data-id="m001">+</button>
+                <button class="btn-hapus" data-id="m001">🗑</button>
+              </div>
+              <span class="item-subtotal">Rp 50.000</span>
+            </div>
+          -->
+        </div>
+
+        <!-- Garis pemisah -->
+        <hr>
+
+        <!-- Total harga -->
+        <div id="baris-total">
+          <span>Total</span>
+          <!-- JS akan update angka ini -->
+          <span id="total-harga">Rp 0</span>
+        </div>
+
+      </div>
+      <!-- Akhir #keranjang-berisi -->
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: FORM PENGIRIMAN
+       Isi: Pilihan kurir + input
+       alamat. Hanya tampil jika
+       keranjang berisi (dikontrol JS).
+  ============================== -->
+  <section id="form-pengiriman" class="keranjang-sembunyi">
+    <div class="container">
+
+      <h2>Detail Pengiriman</h2>
+
+      <!-- BLOK: Pilihan Kurir -->
+      <div id="pilihan-kurir">
+        <p class="label-form">Opsi Pengiriman:</p>
+
+        <div class="opsi-radio">
+          <input
+            type="radio"
+            id="kurir-mandiri"
+            name="kurir"
+            value="Ambil Sendiri"
+            checked>
+          <label for="kurir-mandiri">🏃 Ambil Sendiri</label>
+        </div>
+
+        <div class="opsi-radio">
+          <input
+            type="radio"
+            id="kurir-grab"
+            name="kurir"
+            value="GrabFood">
+          <label for="kurir-grab">🟢 GrabFood</label>
+        </div>
+
+        <div class="opsi-radio">
+          <input
+            type="radio"
+            id="kurir-shopee"
+            name="kurir"
+            value="ShopeeFood">
+          <label for="kurir-shopee">🟠 ShopeeFood</label>
+        </div>
+
+      </div>
+      <!-- Akhir #pilihan-kurir -->
+
+      <!-- BLOK: Input Alamat -->
+      <!-- 
+        id="wrapper-alamat" dikontrol JS:
+        - Jika kurir = "Ambil Sendiri" → wrapper ini disembunyikan
+        - Jika kurir = GrabFood/ShopeeFood → wrapper ini ditampilkan
+      -->
+      <div id="wrapper-alamat" class="alamat-sembunyi">
+        <label for="input-alamat" class="label-form">
+          Alamat Lengkap:
+        </label>
+        <textarea
+          id="input-alamat"
+          rows="3"
+          placeholder="Contoh: Jl. Kenanga No. 5, RT 02/03, Bandung">
+        </textarea>
+        <!-- Pesan error muncul jika alamat kosong saat submit -->
+        <span id="error-alamat" class="teks-error"></span>
+      </div>
+
+      <!-- BLOK: Catatan Tambahan (Opsional) -->
+      <div id="wrapper-catatan">
+        <label for="input-catatan" class="label-form">
+          Catatan (opsional):
+        </label>
+        <textarea
+          id="input-catatan"
+          rows="2"
+          placeholder="Contoh: Tidak pakai pedas, sambal dipisah.">
+        </textarea>
+      </div>
+
+      <!-- BLOK: Tombol Kirim -->
+      <div id="wrapper-submit">
+
+        <!-- 
+          id="btn-wa" adalah target utama whatsapp.js.
+          Jangan ubah id ini.
+        -->
+        <button id="btn-wa" class="btn-utama">
+          📲 Kirim Order via WhatsApp
+        </button>
+
+        <p class="teks-info">
+          Kamu akan diarahkan ke WhatsApp dengan format pesanan
+          yang sudah terisi otomatis.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: FOOTER
+       Identik dengan halaman lain
+  ============================== -->
+  <footer id="footer">
+    <div class="container">
+      <p><strong>Warung Makan Sederhana</strong></p>
+      <p>Jl. Mawar No. 12, Bandung</p>
+      <a href="https://wa.me/6281200000000">Hubungi Kami via WhatsApp</a>
+    </div>
+  </footer>
+
+  <!-- Aktifkan di order.html -->
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/whatsapp.js"></script>
+
+</body>
+
+</html>

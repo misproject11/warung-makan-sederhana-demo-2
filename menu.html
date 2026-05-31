@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — Warung Makan Sederhana</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- =============================
+       SECTION: NAVIGASI
+       Sama dengan index.html,
+       tambahan: badge counter keranjang
+  ============================== -->
+  <header id="navbar">
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        Warung Makan Sederhana
+      </a>
+
+      <nav>
+        <a href="menu.html">Lihat Menu</a>
+
+        <!-- Hook keranjang: JS akan update angka di dalam span ini -->
+        <a href="order.html" id="link-keranjang">
+          Pesanan Saya
+          <span id="cart-count">0</span>
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =============================
+       SECTION: HERO MINI
+       Isi: Judul halaman saja,
+       tanpa gambar besar.
+       Lebih efisien untuk halaman
+       dalam (bukan landing).
+  ============================== -->
+  <section id="hero-mini">
+    <div class="container">
+      <h1>Menu Kami</h1>
+      <p>Pilih favoritmu, langsung pesan via WhatsApp.</p>
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: FILTER KATEGORI
+       Isi: Tombol tab filter.
+       Opsi A: show/hide via class.
+       Tombol aktif diberi class
+       "aktif" oleh JS nanti.
+  ============================== -->
+  <section id="filter-bar">
+    <div class="container">
+
+      <!-- data-filter harus sama persis dengan nilai "kategori" di menu.json -->
+      <button class="btn-filter aktif" data-filter="semua">Semua</button>
+      <button class="btn-filter" data-filter="makanan">Makanan</button>
+      <button class="btn-filter" data-filter="minuman">Minuman</button>
+      <button class="btn-filter" data-filter="paket">Paket</button>
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: GRID MENU
+       Isi: Kartu menu di-render
+       oleh menu.js dari menu.json.
+       Div #menu-grid adalah target
+       render JS — jangan diisi manual.
+  ============================== -->
+  <section id="katalog">
+    <div class="container">
+
+      <!-- JS akan inject kartu menu ke dalam div ini -->
+      <div id="menu-grid">
+
+        <!-- 
+          CONTOH STRUKTUR KARTU (untuk referensi styling CSS nanti).
+          Blok ini akan DIHAPUS dan diganti oleh JS di Tahap 5.
+          Jangan edit isi kartu ini — edit strukturnya jika perlu.
+        -->
+
+        <div class="kartu-menu" data-kategori="makanan">
+
+          <div class="kartu-gambar">
+            <img
+              src="assets/img/nasi-goreng.jpg"
+              alt="Nasi Goreng Spesial">
+            <!-- Badge "Habis" hanya muncul jika tersedia: false -->
+            <!-- <span class="badge-habis">Habis</span> -->
+          </div>
+
+          <div class="kartu-info">
+            <h3>Nasi Goreng Spesial</h3>
+            <p class="deskripsi">Nasi goreng wijen dengan telur ceplok dan ayam suwir.</p>
+            <p class="harga">Rp 25.000</p>
+          </div>
+
+          <div class="kartu-aksi">
+            <!-- Tombol ini akan di-disable jika tersedia: false -->
+            <button class="btn-tambah" data-id="m001">
+              + Tambah
+            </button>
+          </div>
+
+        </div>
+        <!-- Akhir contoh kartu -->
+
+      </div>
+      <!-- Akhir #menu-grid -->
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: FLOATING CART BAR
+       Isi: Bar mengambang di bawah
+       layar. Muncul hanya jika ada
+       item di keranjang.
+       Fungsi: shortcut ke order.html
+  ============================== -->
+  <div id="cart-bar" class="cart-bar-sembunyi">
+    <div class="container">
+
+      <span id="cart-bar-info">
+        <!-- Contoh: "3 item dipilih" — diupdate JS -->
+        0 item dipilih
+      </span>
+
+      <a href="order.html" class="btn-utama">
+        Lihat Pesanan →
+      </a>
+
+    </div>
+  </div>
+
+  <!-- =============================
+       SECTION: FOOTER
+       Identik dengan index.html
+  ============================== -->
+  <footer id="footer">
+    <div class="container">
+      <p><strong>Warung Makan Sederhana</strong></p>
+      <p>Jl. Mawar No. 12, Bandung</p>
+      <a href="https://wa.me/6281200000000">Hubungi Kami via WhatsApp</a>
+    </div>
+  </footer>
+
+<!-- Sesudah (aktifkan) -->
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/menu.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Warung Makan Sederhana</title>
+  <!-- CSS akan dihubungkan di Tahap Styling -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <!-- =============================
+       SECTION: NAVIGASI
+       Isi: Logo toko + link ke menu
+  ============================== -->
+  <header id="navbar">
+    <div class="container">
+
+      <a href="index.html" class="logo">
+        Warung Makan Sederhana
+      </a>
+
+      <nav>
+        <a href="menu.html">Lihat Menu</a>
+        <a href="order.html">Pesanan Saya</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =============================
+       SECTION: HERO
+       Isi: Foto makanan, nama toko,
+       tagline, dan tombol CTA utama
+  ============================== -->
+  <section id="hero">
+    <div class="container">
+
+      <div class="hero-teks">
+        <h1>Warung Makan Sederhana</h1>
+        <p>Masakan Rumah, Rasa Bintang Lima</p>
+        <a href="menu.html" class="btn-utama">Pesan Sekarang</a>
+      </div>
+
+      <div class="hero-gambar">
+        <img
+          src="assets/img/hero-food.jpg"
+          alt="Foto makanan unggulan Warung Makan Sederhana">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: KEUNGGULAN
+       Isi: 3 poin nilai jual singkat
+       (Cepat, Enak, Harga Bersahabat)
+  ============================== -->
+  <section id="keunggulan">
+    <div class="container">
+
+      <div class="poin">
+        <h3>🍳 Masakan Segar</h3>
+        <p>Dimasak setiap hari, bahan pilihan tanpa pengawet.</p>
+      </div>
+
+      <div class="poin">
+        <h3>⚡ Order Cepat</h3>
+        <p>Pesan langsung via WhatsApp, tanpa aplikasi tambahan.</p>
+      </div>
+
+      <div class="poin">
+        <h3>💰 Harga Bersahabat</h3>
+        <p>Porsi kenyang, kantong tetap aman.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: PREVIEW MENU
+       Isi: 3 item menu populer
+       sebagai teaser, dengan CTA
+       ke halaman menu penuh
+  ============================== -->
+  <section id="preview-menu">
+    <div class="container">
+
+      <h2>Menu Favorit Kami</h2>
+
+      <!-- Item menu di-render oleh JS nanti -->
+      <!-- Placeholder manual untuk wireframe -->
+
+      <div class="preview-grid">
+
+        <div class="preview-card">
+          <img src="assets/img/nasi-goreng.jpg" alt="Nasi Goreng Spesial">
+          <h4>Nasi Goreng Spesial</h4>
+          <p>Rp 25.000</p>
+        </div>
+
+        <div class="preview-card">
+          <img src="assets/img/ayam-bakar.jpg" alt="Ayam Bakar Madu">
+          <h4>Ayam Bakar Madu</h4>
+          <p>Rp 35.000</p>
+        </div>
+
+        <div class="preview-card">
+          <img src="assets/img/jus-alpukat.jpg" alt="Jus Alpukat">
+          <h4>Jus Alpukat</h4>
+          <p>Rp 15.000</p>
+        </div>
+
+      </div>
+
+      <a href="menu.html" class="btn-sekunder">Lihat Semua Menu</a>
+
+    </div>
+  </section>
+
+  <!-- =============================
+       SECTION: FOOTER
+       Isi: Nama toko, alamat,
+       dan link WhatsApp langsung
+  ============================== -->
+  <footer id="footer">
+    <div class="container">
+
+      <p><strong>Warung Makan Sederhana</strong></p>
+      <p>Jl. Mawar No. 12, Bandung</p>
+      <a href="https://wa.me/6281200000000">Hubungi Kami via WhatsApp</a>
+
+    </div>
+  </footer>
+
+  <!-- Sesudah (aktifkan) -->
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/menu.js"></script>
+
+</body>
+
+</html>
