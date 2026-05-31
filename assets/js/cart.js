@@ -168,6 +168,7 @@ function cartHitungJumlah() {
 // ------------------------------------------------------------
 
 function cartUpdateUI() {
+  
   var jumlah = cartHitungJumlah();
 
   // --- Update badge counter di navbar (#cart-count) ---
