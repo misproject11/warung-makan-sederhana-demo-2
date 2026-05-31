@@ -168,7 +168,6 @@ function cartHitungJumlah() {
 // ------------------------------------------------------------
 
 function cartUpdateUI() {
-  
   var jumlah = cartHitungJumlah();
 
   // --- Update badge counter di navbar (#cart-count) ---
@@ -179,3 +178,4 @@ function cartUpdateUI() {
 
   // --- Update floating cart bar di menu.html ---
   var elCartBar = docum
+function cartUpdateUI() ;
